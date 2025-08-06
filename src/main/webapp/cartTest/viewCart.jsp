@@ -71,9 +71,9 @@ tbody tr:last-child td {
 			
 		<tbody>
 		
-			<c:forEach	var="cartDto" items="${cartList}">
+			<c:forEach	var="cartDto" items="${cartList}" varStatus="status">
 					<tr>
-						<td><%=num02++%></td>
+						<td>${status.count}</td>
 						<td>${cartDto.product}</td>
 						<td>${cartDto.color}</td>
 						<td>${cartDto.quantity}</td>
