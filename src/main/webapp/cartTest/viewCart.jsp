@@ -58,7 +58,8 @@ tbody tr:last-child td {
 	
 		%>
 		
-		
+		<c:choose>
+			<c:when test="${cartList != null }">
 		<table>
 		<thead>
 			<tr>
@@ -82,5 +83,10 @@ tbody tr:last-child td {
 		
 		</tbody>
 	</table>
+		</c:when>
+		<c:otherwise>
+			
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

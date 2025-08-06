@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+ <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <style type="text/css">
 	/* 테이블 전체 스타일 */
 table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
   font-size: 14px;
   color: #333;
@@ -65,6 +66,12 @@ tbody tr:hover {
 		boardList.add(new BoardDto(number++, "공지사항", "관리자", "2025-07-21"));
 		boardList.add(new BoardDto(number++, "날씨가 비와요.", "김유신", "2025-08-02"));
 		boardList.add(new BoardDto(number++, "비 진짜 많이 와요.", "이순신", "2025-08-02"));
+		boardList.add(new BoardDto(number++, "스타크래프트 립버전 1.16.1다운 스타크래프트 립버전 1.16.1다운 있을 것 같았다. 그건 실로 벅찬 감격이었다.고마워요 본드. 덕분에 마음이 아주 편해졌어요.고마워할 필요는 없어.킴은 미소지으며 손을 내밀었다. 니콜라는 기쁜 얼굴로 악수를", "<i>탈퇴한 회원</i>", "2025-08-23"));
+		boardList.add(new BoardDto(number++, "을 것 같았다. 그건 실로 벅찬 감격이었다.고마워요 본드. 덕분에 마음이 아주 편해졌어요.고마워할 필요는 없어.킴은 미소지으며 손을 내밀었다. 니콜라는 기쁜 얼굴로 악수를", "<i>탈퇴한 회원</i>", "2025-08-23"));
+		boardList.add(new BoardDto(number++, "스타크래프트 립버전 1.16.1다운 스타크래프트 립버전 실로 벅찬 감격이었다.고마워요 본드. 덕분에 마음이 아주 편해졌어요.고마워할 필요는 없어.킴은 미소지으며 손을 내밀었다. 니콜라는 기쁜 얼굴로 악수를", "<i>탈퇴한 회원</i>", "2025-08-23"));
+		boardList.add(new BoardDto(number++, "스타크래프트 립버전 1.16.1다운 스타크래프트 립버전 1.16.1다운 있을 것 같았다. 그건 실로 벅찬 감격이었다.고마워요 본드. 덕분에 마음이 아주 편해졌어요.고마워할 필요는 없어.킴은 미소지으며 손을 내밀었다. 니콜라는 기쁜 얼굴로 악수를", "<i>탈퇴한 회원</i>", "2025-08-23"));
+		boardList.add(new BoardDto(number++, "스타크래프트 립버전 1.16.1다운  있을 것 같았다. 그건 실로 벅찬 감격이었다.고마워요 본드. 덕분에 마음이 아주 편해졌어요.고마워할 필요는 없어.킴은 미소지으며 손을 내밀었다. 니콜라는 기쁜 얼굴로 악수를", "<i>탈퇴한 회원</i>", "2025-08-23"));
+		boardList.add(new BoardDto(number++, "스타크래프트 립버전 1.16.1다운 스타크래프트 립버전 1.16.1다운 있을 것 덕분에 마음이 아주 편해졌어요.고마워할 필요는 없어.킴은 미소지으며 손을 내밀었다. 니콜라는 기쁜 얼굴로 악수를", "<i>탈퇴한 회원</i>", "2025-08-23"));
 		boardList.add(new BoardDto(number++, "게시판 여기 망했나요?", "김유신", "2025-08-04"));
 		boardList.add(new BoardDto(number++, "그런듯", "이순신", "2025-08-05"));
 		
@@ -87,7 +94,17 @@ tbody tr:hover {
 			<c:forEach	var="boardDto" items="${boardList}">
 				<tr>
 					<td>${boardDto.bnum}</td>
-					<td>${boardDto.btitle}</td>
+					<td>
+					<c:choose>
+					<c:when test="${fn:length(boardDto.btitle) > 30 }">
+					<a href="#">${fn:substring( boardDto.btitle, 0 , 40)}...</a>
+					</c:when>
+					<c:otherwise>
+					<a href="#">${boardDto.btitle}</a>
+					</c:otherwise>
+					</c:choose>
+					
+					</td>
 					<td>${boardDto.bwriter}</td>
 					<td>${boardDto.bdate}</td>
 				</tr>

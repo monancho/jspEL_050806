@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="width: 70%;">
  	<h2> 장바구니에 넣을 상품을 선택하세여.</h2>
 	<hr>
 	<form action="addCart.jsp">
