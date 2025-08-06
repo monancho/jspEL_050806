@@ -18,18 +18,23 @@
 	 int number = 1;
 	String product = request.getParameter("product");
 	String color = request.getParameter("color");
-	String quantity = request.getParameter("quantity");
+	int quantity = Integer.valueOf(request.getParameter("quantity"));
 
 	
 	if (cartList == null) { 
 		cartList = new ArrayList<CartDto>(); 
 	}
-
-	cartList.add(new CartDto(number++, product, color, quantity));
+	
+	if (quantity > 0) {
+	cartList.add(new CartDto( product, color, quantity));
 	session.setAttribute("cart", cartList);
 	
+	} else { 
+		
+		System.out.println("1보다 작은 숫자는 입력 불가능");
+
+	}
 	response.sendRedirect("productList.jsp");
-	
 	%>
 	
 	
