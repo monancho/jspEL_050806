@@ -76,7 +76,7 @@ tbody tr:last-child td {
 						<td>${status.count}</td>
 						<td>${cartDto.product}</td>
 						<td>${cartDto.color}</td>
-						<td>${cartDto.quantity}</td>
+						<td>${cartDto.quantity}개</td>
 					</tr>
 				</c:forEach>
 		
